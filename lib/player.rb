@@ -10,8 +10,13 @@ class Player
 
   def play_move
     puts "Please use the numpad to enter a cell: "
-    @board.add_move(@piece_symbol, Integer(gets.chomp))
-    @board.refresh
+    while move = Integer(gets.chomp)
+      unless @board.board.flatten.include?(move)
+          @board.add_move(@piece_symbol, move)
+          @board.refresh
+          break
+      end
+      puts "Move already made. Please try again:"
+    end
   end
-
 end

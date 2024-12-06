@@ -12,13 +12,10 @@ player_arr = [player_1, player_2]
 puts board
 
 i=0
-until(board.winner)
-  if (board.length==9)
-    puts "Tie! Thanks for playing"
-    break
-  end
+until(board.winner || board.length == 9)
   puts "#{player_arr[i%2].name} to move"
   player_arr[i%2].play_move
   i += 1
 end
-puts "#{player_arr[(i+1)%2].name} wins!" unless (board.length==9)
+
+puts board.length==9 ? "Tie! Thanks for playing" : "#{player_arr[(i+1)%2].name} wins!"
